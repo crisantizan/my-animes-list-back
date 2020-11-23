@@ -17,3 +17,13 @@ services:
       - .env
     # networks:
     #   - webnet
+    depends_on:
+    - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - ${MONGO_PORT}:${MONGO_PORT}
+    volumes:
+      - /home/cristian/.mongo-data/my-animes-list-back:/data/db
+    command: --quiet
